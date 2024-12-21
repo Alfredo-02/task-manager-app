@@ -1,4 +1,4 @@
-# Archivos y directorios de Python
+# Archivos y directorios de Python (si es un proyecto combinado Python-Angular)
 venv/
 env/
 .venv/
@@ -13,10 +13,6 @@ __pycache__/
 # Archivos de caché de Python
 *.db
 *.sqlite
-
-# Directorios y archivos de entorno virtual
-.venv/
-*.env/
 
 # Archivos de logs
 *.log
@@ -46,12 +42,6 @@ build/
 
 # Archivos de Angular de producción
 .angular/
-
-# Configuración de IDEs específicos para Angular (por ejemplo, VSCode)
-.vscode/
-
-# Dependencias de frontend (Angular) instaladas globalmente
-npm/
 
 # Archivos de configuración de Angular (puede ser necesario en algunos casos)
 angular.json
