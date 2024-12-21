@@ -26,8 +26,8 @@ describe('TaskFormComponent', () => {
 
   // Crear instancia del componente antes de cada prueba
   beforeEach(() => {
-    fixture = TestBed.createComponent(TaskFormComponent);
-    component = fixture.componentInstance;
+    fixture = TestBed.createComponent(TaskFormComponent); // Creación del componente
+    component = fixture.componentInstance; // Asignación de la instancia del componente
     fixture.detectChanges();
   });
 
@@ -39,14 +39,14 @@ describe('TaskFormComponent', () => {
   // Prueba de inicializacion del formulario
   it('should initialize with empty form', () => {
     expect(component.taskForm.get('title')?.value).toBe('');
-    expect(component.taskForm.get('description')?.value).toBe('');
+    expect(component.taskForm.get('description')?.value).toBe(''); // Verifica que el campo 'description' esté vacío
     expect(component.taskForm.get('status')?.value).toBe('pendiente');
   });
 
   // Prueba de validacion de campos requeridos
   it('should validate required fields', () => {
     const titleControl = component.taskForm.get('title');
-    expect(titleControl?.valid).toBeFalsy();
-    expect(titleControl?.errors?.['required']).toBeTruthy();
+    expect(titleControl?.valid).toBeFalsy();  // Verifica que el campo 'title' no sea válido si está vacío
+    expect(titleControl?.errors?.['required']).toBeTruthy(); // Verifica que haya un error de 'required' en el campo 'title'
   });
 });
