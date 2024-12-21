@@ -1,57 +1,69 @@
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Tarea</title>
-    <link rel="stylesheet" href="task-list.component.scss"> <!-- Aquí se vincula el archivo CSS compilado -->
-  </head>
+  <!-- Definicion del charset y la vista para dispositivos moviles -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Tarea</title>
+  <!-- Vinculacion al archivo de estilos compilado (SCSS) -->
+  <link rel="stylesheet" href="task-list.component.scss">
+</head>
 
 <div class="container mx-auto p-4">
-    <div class="flex justify-between items-center mb-4">
-      <h1 class="text-2xl font-bold">Lista de Tareas</h1>
-      <button
-        (click)="createTask()"
-        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-      >
-        Nueva Tarea
-      </button>
-    </div>
-  
-    <div class="grid gap-4">
-      <div *ngFor="let task of tasks" 
-           class="border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex justify-between items-start">
-          <div>
-            <h2 class="text-xl font-semibold">{{task.title}}</h2>
-            <p class="text-gray-600 mt-1" *ngIf="task.description">{{task.description}}</p>
-            <span class="inline-block mt-2 px-2 py-1 text-sm rounded-full"
-                  [ngClass]="{
-                    'bg-yellow-100 text-yellow-800': task.status === 'pendiente',
-                    'bg-blue-100 text-blue-800': task.status === 'en_progreso',
-                    'bg-green-100 text-green-800': task.status === 'completada'
-                  }">
-              {{task.status | titlecase}}
-            </span>
-          </div>
-          <div class="flex gap-2">
-            <button
-              (click)="editTask(task.id)"
-              class="text-blue-500 hover:text-blue-700"
-            >
-              Editar
-            </button>
-            <button
-              (click)="deleteTask(task.id)"
-              class="text-red-500 hover:text-red-700"
-            >
-              Eliminar
-            </button>
-          </div>
+  <!-- Seccion principal con titulo y boton para crear una nueva tarea -->
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-bold">Lista de Tareas</h1>
+    <!-- Boton que ejecuta la funcion 'createTask' al ser clickeado -->
+    <button
+      (click)="createTask()"
+      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+    >
+      Nueva Tarea
+    </button>
+  </div>
+
+  <!-- Seccion para mostrar las tareas con estilo en grid -->
+  <div class="grid gap-4">
+    <!-- Iteracion sobre la lista de tareas -->
+    <div *ngFor="let task of tasks" 
+         class="border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+      <div class="flex justify-between items-start">
+        <div>
+          <!-- Titulo de la tarea -->
+          <h2 class="text-xl font-semibold">{{task.title}}</h2>
+          <!-- Descripcion de la tarea, solo se muestra si existe -->
+          <p class="text-gray-600 mt-1" *ngIf="task.description">{{task.description}}</p>
+          <!-- Etiqueta que cambia de color dependiendo del estado de la tarea -->
+          <span class="inline-block mt-2 px-2 py-1 text-sm rounded-full"
+                [ngClass]="{
+                  'bg-yellow-100 text-yellow-800': task.status === 'pendiente',
+                  'bg-blue-100 text-blue-800': task.status === 'en_progreso',
+                  'bg-green-100 text-green-800': task.status === 'completada'
+                }">
+            {{task.status | titlecase}}
+          </span>
+        </div>
+        <div class="flex gap-2">
+          <!-- Boton para editar la tarea, ejecuta 'editTask' con el ID de la tarea -->
+          <button
+            (click)="editTask(task.id)"
+            class="text-blue-500 hover:text-blue-700"
+          >
+            Editar
+          </button>
+          <!-- Boton para eliminar la tarea, ejecuta 'deleteTask' con el ID de la tarea -->
+          <button
+            (click)="deleteTask(task.id)"
+            class="text-red-500 hover:text-red-700"
+          >
+            Eliminar
+          </button>
         </div>
       </div>
-      
-      <div *ngIf="tasks.length === 0" 
-           class="text-center py-8 text-gray-500">
-        No hay tareas disponibles
-      </div>
+    </div>
+    
+    <!-- Mensaje si no hay tareas disponibles -->
+    <div *ngIf="tasks.length === 0" 
+         class="text-center py-8 text-gray-500">
+      No hay tareas disponibles
     </div>
   </div>
+</div>
