@@ -5,46 +5,44 @@ import { TaskService } from '../../services/task.service';
 import { Task } from '../../models/task.interface';
 
 @Component({
-  selector: 'app-task-list',
+  selector: 'app-task-list', // Selector para usar el componente
   standalone: true,
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule], // Importa CommonModule
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss']
 })
 export class TaskListComponent implements OnInit {
-  tasks: Task[] = [];
+  tasks: Task[] = []; // Array de tareas
 
   constructor(
-    private taskService: TaskService,
-    private router: Router
+    private taskService: TaskService, // Servicio para manejar tareas
+    private router: Router // Router para navegar entre vistas
   ) {}
 
   ngOnInit(): void {
-    this.loadTasks();
+    this.loadTasks(); // Carga las tareas al iniciar el componente
   }
 
   loadTasks(): void {
-    this.taskService.getTasks().subscribe({
-      next: (tasks) => this.tasks = tasks,
-      error: (error) => console.error('Error cargando tareas:', error)
+    this.taskService.getTasks().subscribe({ // Obtiene las tareas desde el servicio
+      next: (tasks) => this.tasks = tasks, // Asigna las tareas al array
+      error: (error) => console.error('Error cargando tareas:', error) // Maneja errores
     });
   }
 
   createTask(): void {
-    this.router.navigate(['/tasks/new']);
+    this.router.navigate(['/tasks/new']); // Navega a la vista para crear tarea
   }
 
   editTask(id: number): void {
-    this.router.navigate(['/tasks/edit', id]);
+    this.router.navigate(['/tasks/edit', id]); // Navega a la vista de edición
   }
 
   deleteTask(id: number): void {
-    if (confirm('¿Estás seguro de que deseas eliminar esta tarea?')) {
+    if (confirm('¿Estás seguro de que deseas eliminar esta tarea?')) { // Confirma eliminación
       this.taskService.deleteTask(id).subscribe({
-        next: () => this.loadTasks(),
-        error: (error) => console.error('Error eliminando tarea:', error)
+        next: () => this.loadTasks(), // Recarga tareas después de eliminar
+        error: (error) => console.error('Error eliminando tarea:', error) // Maneja errores
       });
     }
   }
