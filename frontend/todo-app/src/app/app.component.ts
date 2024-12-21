@@ -1,13 +1,14 @@
+// Importa Component y RouterModule desde Angular
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';  // Asegúrate de importar RouterModule
+import { RouterModule } from '@angular/router';  // Importa RouterModule
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-root',  // Selector del componente
   standalone: true, 
-  imports: [RouterModule],  // Agrega RouterModule aquí
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  imports: [RouterModule],  // Importa RouterModule para el enrutamiento
+  templateUrl: './app.component.html',  // Plantilla HTML
+  styleUrls: ['./app.component.scss']  // Estilos CSS/SCSS
 })
 export class AppComponent {
-  title = 'Gestión de Tareas (To-Do List)';
+  title = 'Gestión de Tareas (To-Do List)';  // Título de la app
 }
