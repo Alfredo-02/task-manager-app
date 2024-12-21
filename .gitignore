@@ -50,3 +50,6 @@ tslint.json
 
 # Otros archivos comunes que no deben ser subidos
 *.tgz
+
+# Angular cache
+.angular/
