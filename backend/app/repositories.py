@@ -17,7 +17,7 @@ class TaskRepository:
     # Crea una nueva tarea en la base de datos
     @staticmethod
     def create(db: Session, task: schemas.TaskCreate):
-        db_task = models.Task(**task.dict())
+        db_task = models.Task(**task.model_dump())
         db.add(db_task)
         db.commit()
         db.refresh(db_task)
@@ -28,7 +28,7 @@ class TaskRepository:
     def update(db: Session, task_id: int, task: schemas.TaskUpdate):
         db_task = TaskRepository.get_by_id(db, task_id)
         if db_task:
-            update_data = task.dict(exclude_unset=True)
+            update_data = task.model_dump(exclude_unset=True)
             for key, value in update_data.items():
                 setattr(db_task, key, value)
             db.commit()
