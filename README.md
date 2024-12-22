@@ -136,17 +136,17 @@ pip install pytest
 
 1. **Ejecutar todas las pruebas:**
    ```bash
-   pytest test/
+   pytest tests/
    ```
 
 2. **Ejecutar pruebas unitarias:**
    ```bash
-   pytest test/test_unit.py
+   pytest tests/test_unit.py
    ```
 
 3. **Ejecutar pruebas de integración:**
    ```bash
-   pytest test/test_integration.py
+   pytest tests/test_integration.py
    ```
 
 ### Opciones adicionales
