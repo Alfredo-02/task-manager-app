@@ -92,7 +92,7 @@ SQLALCHEMY_DATABASE_URL = "mysql://root:Admin08.@localhost/todo_db"
 4. Inicia el servidor backend:
 
 ```bash
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 ```
 
 - La API estará disponible en: [http://localhost:8000](http://localhost:8000)  
