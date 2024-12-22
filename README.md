@@ -121,3 +121,51 @@ ng serve
 ```
 
 - La aplicación estará disponible en: [http://localhost:4200](http://localhost:4200)
+
+## Ejecución de Pruebas
+
+### Instalación de `pytest`
+
+Asegúrate de tener instalado `pytest`. Si no lo tienes, instálalo con:
+
+```bash
+pip install pytest
+```
+
+### Ejecución de las Pruebas
+
+1. **Ejecutar todas las pruebas:**
+   ```bash
+   pytest test/
+   ```
+
+2. **Ejecutar pruebas unitarias:**
+   ```bash
+   pytest test/test_unit.py
+   ```
+
+3. **Ejecutar pruebas de integración:**
+   ```bash
+   pytest test/test_integration.py
+   ```
+
+### Opciones adicionales
+- **Modo detallado:**
+  ```bash
+  pytest -v
+  ```
+
+- **Detener en el primer fallo:**
+  ```bash
+  pytest -x
+  ```
+
+- **Ver errores detallados:**
+  ```bash
+  pytest -vv
+  ```
+
+### Nota
+Para las pruebas de integración, asegúrate de que el archivo de base de datos de prueba (`test.db`) se genere correctamente y sea accesible.
+
+---
