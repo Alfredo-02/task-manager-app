@@ -53,3 +53,5 @@ tslint.json
 
 # Angular cache
 .angular/
+
+.coverage
