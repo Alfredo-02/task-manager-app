@@ -1,22 +1,31 @@
-Aplicación de Lista de Tareas
-Una aplicación full-stack de gestión de tareas construida con FastAPI (Backend) y Angular (Frontend).
-Estructura del Proyecto
-Copyproyecto/
+# Aplicación de Lista de Tareas
+
+Una aplicación full-stack de gestión de tareas construida con **FastAPI** (Backend) y **Angular** (Frontend).
+
+## **Estructura del Proyecto**
+```
+proyecto/
 ├── backend/         # Aplicación FastAPI
 ├── frontend/        # Aplicación Angular
-└── README.md       # Este archivo
-Requisitos Previos
+└── README.md        # Este archivo
+```
+
+## **Requisitos Previos**
+
 Antes de ejecutar esta aplicación, asegúrate de tener instalado lo siguiente:
 
-Python 3.9 o superior
-Node.js y npm
-Servidor MySQL
-Angular CLI (npm install -g @angular/cli)
+- **Python** 3.9 o superior
+- **Node.js** y **npm**
+- **Servidor MySQL**
+- **Angular CLI** (instalar con: `npm install -g @angular/cli`)
 
-Configuración de la Base de Datos
+---
 
-Inicia sesión en MySQL y ejecuta los siguientes comandos:
+## **Configuración de la Base de Datos**
 
+1. Inicia sesión en MySQL y ejecuta los siguientes comandos:
+
+```sql
 -- Crear la base de datos
 CREATE DATABASE todo_db;
 
@@ -29,58 +38,86 @@ FLUSH PRIVILEGES;
 
 -- Seleccionar la base de datos
 USE todo_db;
+```
 
+2. Agrega campos para manejar las marcas de tiempo en la tabla `tasks` (si aún no están configurados):
+
+```sql
 -- Configurar los campos de timestamps
 ALTER TABLE tasks ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 ALTER TABLE tasks ADD COLUMN created_at DATETIME DEFAULT CURRENT_TIMESTAMP;
 
 -- Verificar la estructura de la tabla
 DESCRIBE tasks;
-La tabla tasks debe tener la siguiente estructura:
+```
 
-id (PRIMARY KEY)
-title (VARCHAR)
-description (TEXT)
-status (VARCHAR)
-created_at (DATETIME)
-updated_at (DATETIME)
+La tabla `tasks` debe tener la siguiente estructura:
 
-Configuración del Backend
+| Campo       | Tipo        | Clave        | Descripción                  |
+|-------------|-------------|--------------|------------------------------|
+| `id`        | INT         | PRIMARY KEY  | Identificador único          |
+| `title`     | VARCHAR     |              | Título de la tarea           |
+| `description`| TEXT       |              | Descripción detallada        |
+| `status`    | VARCHAR     |              | Estado (completo, pendiente) |
+| `created_at`| DATETIME    |              | Fecha de creación            |
+| `updated_at`| DATETIME    |              | Fecha de última actualización|
 
-Navega al directorio del backend:
+---
 
+## **Configuración del Backend**
+
+1. Navega al directorio del backend:
+
+```bash
 cd backend
+```
 
-Crea y activa un entorno virtual:
+2. Crea y activa un entorno virtual:
 
+```bash
 python -m venv venv
+# En Windows:
 venv\Scripts\activate
+# En macOS/Linux:
+source venv/bin/activate
+```
 
-Instala las dependencias:
+3. Configura la conexión a la base de datos en el archivo `database.py`:
 
-
-Configura la base de datos:
-
-
-Asegúrate de que la base de datos MySQL todo_db esté creada
-Actualiza la cadena de conexión en database.py con:
-
+```python
 # URL de conexión a la base de datos MySQL
 SQLALCHEMY_DATABASE_URL = "mysql://root:Admin08.@localhost/todo_db"
+```
 
+4. Inicia el servidor backend:
 
-Inicia el servidor backend:
-
+```bash
 uvicorn main:app --reload
+```
 
-La API estará disponible en http://localhost:8000
-La documentación de la API (Swagger UI) estará disponible en http://localhost:8000/docs
+- La API estará disponible en: [http://localhost:8000](http://localhost:8000)  
+- La documentación interactiva estará en: [http://localhost:8000/docs](http://localhost:8000/docs)
 
-Configuración del Frontend
-Navega al directorio del frontend:
+---
+
+## **Configuración del Frontend**
+
+1. Navega al directorio del frontend:
+
+```bash
 cd frontend
+```
 
-Instala las dependencias de Angular:
+2. Instala las dependencias de Angular:
+
+```bash
 npm install
-Inicia el servidor frontend:
+```
+
+3. Inicia el servidor de desarrollo:
+
+```bash
 ng serve
+```
+
+- La aplicación estará disponible en: [http://localhost:4200](http://localhost:4200)
