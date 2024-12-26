@@ -53,14 +53,14 @@ DESCRIBE tasks;
 
 La tabla `tasks` debe tener la siguiente estructura:
 
-| Campo       | Tipo        | Clave        | Descripción                  |
-|-------------|-------------|--------------|------------------------------|
-| `id`        | INT         | PRIMARY KEY  | Identificador único          |
-| `title`     | VARCHAR     |              | Título de la tarea           |
-| `description`| TEXT       |              | Descripción detallada        |
-| `status`    | VARCHAR     |              | Estado (completo, pendiente) |
-| `created_at`| DATETIME    |              | Fecha de creación            |
-| `updated_at`| DATETIME    |              | Fecha de última actualización|
+| Campo       | Tipo        | Clave        | Descripción                                 |
+|-------------|-------------|--------------|---------------------------------------------|
+| `id`        | INT         | PRIMARY KEY  | Identificador único                         |
+| `title`     | VARCHAR     |              | Título de la tarea                          |
+| `description`| TEXT       |              | Descripción detallada                       |
+| `status`    | VARCHAR     |              | Estado (Completada, Pendiente, En_progreso) |
+| `created_at`| DATETIME    |              | Fecha de creación                           |
+| `updated_at`| DATETIME    |              | Fecha de última actualización               |
 
 ---
 
